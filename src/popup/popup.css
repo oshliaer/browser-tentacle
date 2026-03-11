@@ -1,0 +1,162 @@
+/* ── Browser Tentacle – Popup Styles ─────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #1a1a2e;
+  --color-surface: #16213e;
+  --color-accent: #0f3460;
+  --color-primary: #e94560;
+  --color-text: #eaeaea;
+  --color-muted: #8892a4;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --radius: 6px;
+  --transition: 0.2s ease;
+}
+
+body {
+  width: 340px;
+  min-height: 200px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 0;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.logo {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  flex: 1;
+  color: var(--color-text);
+}
+
+/* ── Status badge ────────────────────────────────────────────────────────── */
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.badge--connected    { background: var(--color-success); color: #fff; }
+.badge--connecting   { background: var(--color-warning); color: #fff; }
+.badge--disconnected { background: var(--color-muted);   color: #fff; }
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+.content {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.panel {
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: var(--color-surface);
+}
+
+/* ── Form controls ───────────────────────────────────────────────────────── */
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-muted);
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 7px 10px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.input:focus,
+.select:focus {
+  border-color: var(--color-primary);
+}
+
+.input[readonly] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition), filter var(--transition);
+}
+
+.btn:hover   { filter: brightness(1.1); }
+.btn:active  { filter: brightness(0.9); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn--primary   { background: var(--color-primary); color: #fff; }
+.btn--secondary { background: var(--color-accent);  color: var(--color-text); }
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Hint ────────────────────────────────────────────────────────────────── */
+.hint {
+  font-size: 11px;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+/* ── Feedback ────────────────────────────────────────────────────────────── */
+.feedback {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.feedback--success { background: rgba(76,175,80,.15); color: var(--color-success); border: 1px solid var(--color-success); }
+.feedback--error   { background: rgba(244,67,54,.15); color: var(--color-error);   border: 1px solid var(--color-error); }
+.feedback--info    { background: rgba(15,52,96,.4);   color: var(--color-text);    border: 1px solid var(--color-accent); }

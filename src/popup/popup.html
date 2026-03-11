@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browser Tentacle</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="../../icons/icon48.png" alt="Browser Tentacle" class="logo" width="32" height="32" />
+    <h1 class="title">Browser Tentacle</h1>
+    <span id="status-badge" class="badge badge--disconnected" aria-live="polite">Disconnected</span>
+  </header>
+
+  <main class="content">
+    <!-- Mode selector -->
+    <section class="section" aria-labelledby="mode-label">
+      <label id="mode-label" class="label" for="mode-select">Mode</label>
+      <select id="mode-select" class="select">
+        <option value="A">Mode A – Simple Webhook</option>
+        <option value="B">Mode B – Custom Agent (WebSocket)</option>
+      </select>
+    </section>
+
+    <!-- Mode A panel -->
+    <section id="panel-a" class="section panel" aria-label="Webhook settings">
+      <label class="label" for="webhook-url">Webhook URL</label>
+      <input
+        id="webhook-url"
+        type="url"
+        class="input"
+        placeholder="https://your-server.example/hook"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="btn-send-webhook" class="btn btn--primary" type="button">
+        Send Context Now
+      </button>
+      <p class="hint">Sends a one-shot HTTP POST with the current page context.</p>
+    </section>
+
+    <!-- Mode B panel -->
+    <section id="panel-b" class="section panel" aria-label="WebSocket agent settings" hidden>
+      <label class="label" for="ws-url">WebSocket URL</label>
+      <input
+        id="ws-url"
+        type="url"
+        class="input"
+        placeholder="wss://your-agent.example/ws"
+        autocomplete="off"
+        spellcheck="false"
+      />
+
+      <label class="label" for="api-key">API Key</label>
+      <input
+        id="api-key"
+        type="password"
+        class="input"
+        placeholder="sk-…"
+        autocomplete="off"
+        spellcheck="false"
+      />
+
+      <label class="label" for="client-id">Client ID</label>
+      <input
+        id="client-id"
+        type="text"
+        class="input"
+        placeholder="(auto-generated UUID)"
+        autocomplete="off"
+        spellcheck="false"
+        readonly
+      />
+
+      <div class="row">
+        <button id="btn-save" class="btn btn--primary" type="button">Save &amp; Connect</button>
+        <button id="btn-disconnect" class="btn btn--secondary" type="button">Disconnect</button>
+      </div>
+    </section>
+
+    <!-- Status / feedback area -->
+    <section id="feedback" class="feedback" aria-live="assertive" hidden></section>
+  </main>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
